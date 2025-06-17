@@ -1,0 +1,206 @@
+ <!DOCTYPE html>
+ <html>
+<head>
+  <title>Scholarship Application Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #1e3c72, #2a5298, #fbc2eb);
+    }
+
+    .container {
+      width: 60%;
+      margin: 20px auto;
+      padding: 70px;
+      background: lightyellow;
+      border: 2px solid #ddd;
+      border-radius: 80px;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: blue;
+      border-radius: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, select, textarea {
+      width: 80%;
+      padding: 5px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color:pink;
+      color: white;
+      border: none;
+      border-radius: 200px;
+      cursor: pointer;
+    }
+
+    @media print {
+      body {
+        font-size: 16px !important;
+        background-color: #f0f0f0 !important;
+        color: black !important;
+        overflow: visible !important;
+      }
+
+      .container {
+        background-color: #ffffff !important;
+        color: black !important;
+        padding: 20px;
+        box-shadow: none !important;
+        border: 1px solid #000;
+      }
+
+      button, a {
+        display: none !important;
+      }
+
+      input, select, textarea {
+        border: none !important;
+        background: none !important;
+        font-size: 16px !important;
+        color: black !important;
+      }
+
+      label {
+        font-weight: bold;
+        font-size: 16px !important;
+      }
+
+      @page {
+        margin: 1in;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <center>
+      <img src="C:\Users\aksha\Downloads/Screenshot_18-5-2025_81049_www.bing.com.jpeg" height="80" width="80">
+    
+<nav>
+<a href="open.html">Home</a>
+<a href="https://www.amity.edu/bengaluru/">About</a>
+<a href="contact.html">contact</a>
+</nav>
+</center>
+
+
+    <h2>Scholarship Application</h2>
+
+    <form id="userForm" action="/submit" method="post" enctype="multipart/form-data">
+
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required>
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="marks10">10th / Equivalent percentage</label>
+      <select id="marks10" name="marks10" required>
+        <option value="">Select</option>
+        <option value="85">Above 85%</option>
+        <option value="70">Above 70%</option>
+        <option value="45">Above 45%</option>
+        <option value="33">Just Pass</option>
+      </select>
+
+      <label for="marks12">12th / Equivalent percentage</label>
+      <select id="marks12" name="marks12" required>
+        <option value="">Select</option>
+        <option value="85">Above 85%</option>
+        <option value="70">Above 70%</option>
+        <option value="45">Above 45%</option>
+        <option value="33">Just Pass</option>
+      </select>
+
+      <label for="education">Present Course / Branch</label>
+      <input type="text" id="education" name="education" required>
+
+      <label for="year">Present Year with SEM</label>
+      <input type="text" id="year" name="year" required>
+
+      <label for="usen">UNIVERSITY (USEN)</label>
+      <input type="text" id="usen" name="usen" required>
+
+      <label for="cgpa">CGPA / Percentage till last sem</label>
+      <input type="text" id="cgpa" name="cgpa" placeholder="If 1st sem mention not available" required>
+
+      <label for="income">Family Income</label>
+      <input type="text" id="income" name="income" placeholder="MENTION PER YEAR" required>
+
+      <label for="caste">Caste</label>
+      <select id="caste" name="caste" required>
+        <option value="">Select</option>
+        <option value="OBC">OBC</option>
+        <option value="GENERAL">GENERAL</option>
+        <option value="SC">SC</option>
+        <option value="ST">ST</option>
+        <option value="EWS">EWS</option>
+      </select>
+
+      <label for="statement">Statement of Purpose</label>
+      <textarea id="statement" name="statement" rows="5" required></textarea>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <label for="nationality">Nationality</label>
+      <input type="text" id="nationality" name="nationality" required>
+
+      <center>
+        
+<p><strong>Note:</strong>Please Print The Application For Further Referencses </p>
+
+       <button type="button" onclick="printFormData()">Print Application</button><br><br>
+<button type="submit"><a href="document.html">GO TO DOCUMENTS UPLOAD PAGE</a></button><br><br>
+
+      </center>
+      <br>
+      <button><a href="animation.html">Back</a></button>
+    </form>
+  </div>
+
+  <script>
+    function printFormData() {
+      const form = document.getElementById('userForm');
+      const formData = new FormData(form);
+      let output = '--- Form Data ---\n\n';
+      for (let [key, value] of formData.entries()) {
+        output += `${key}: ${value}\n`;
+      }
+
+      const newWindow = window.open('', '', 'width=600,height=600');
+      newWindow.document.write('<html><head><title>Print Form</title></head><body><pre>' + output + '</pre></body></html>');
+      newWindow.document.close();
+      newWindow.focus();
+      newWindow.print();
+      newWindow.close();
+    }
+  </script>
+</body>
+</html>
